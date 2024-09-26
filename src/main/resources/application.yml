@@ -1,0 +1,21 @@
+spring:
+  application.name: resilience4j-demo
+  jackson.serialization.indent_output: true
+
+management:
+  endpoints.web.exposure.include:
+    - '*'
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
+resilience4j:
+  ratelimiter:
+    instances:
+      ratelimitApi:
+        limit-for-period: 5
+        limit-refresh-period: 1s
+        timeout-duration: 100ms
